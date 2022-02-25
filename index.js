@@ -158,7 +158,7 @@ const getcurrentWeekData = (roomFilterArr) => {
     const todayBookingArr = roomFilterArr.filter((data) => {
         if (
             getDate(data.endTime) >= today &&
-            getDate(data.startTime) < nextSevenDay
+            getDate(data.endTime) < nextSevenDay
         ) {
             return true
         }
@@ -188,7 +188,7 @@ const getNextWeekData = (roomFilterArr) => {
     const todayBookingArr = roomFilterArr.filter((data) => {
         if (
             getDate(data.endTime) >= nextSevenDay &&
-            getDate(data.startTime) < nextFourteenDay
+            getDate(data.endTime) < nextFourteenDay
         ) {
             return true
         }
