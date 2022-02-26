@@ -133,9 +133,18 @@ const getCurrentDayData = (roomFilterArr) => {
     */
 
     // mock up current date
-    const today = new Date('2019-09-28T00:00:00.000Z');
+    const today = new Date('2019-09-20T00:00:00.000Z');
 
-    const todayBookingArr = roomFilterArr.filter((data) => getDate(data.startTime).toDateString() === today.toDateString());
+    const todayBookingArr = roomFilterArr.filter((data) => {
+        if (
+            getDate(data.startTime) <= today &&
+            getDate(data.endTime) >= today
+        ) {
+            return true;
+        }
+
+        return false;
+    });
     return todayBookingArr;
 }
 
@@ -219,5 +228,5 @@ const startTime = '2019-09-28 11:00:00';
 const endTime = '2019-09-28 14:00:00';
 
 console.log(checkAvailability(roomId, startTime, endTime));
-console.log(getBookings('A101', 'next week'))
+console.log(getBookings('Auditorium', 'today'))
 // END MAIN
